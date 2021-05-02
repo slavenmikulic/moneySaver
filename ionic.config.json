@@ -1,0 +1,7 @@
+{
+  "name": "moneySaver",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
