@@ -1,0 +1,23 @@
+<ion-item>
+  <ion-label class="transaction-item">
+    <div>
+      <div class="transaction-item__label">Location</div>
+      <div class="transaction-item__data">
+        <span>{{ item.name }}</span>
+        <ion-icon class="transaction-item__icon"
+                  [ngClass]="'transaction-item__icon--' + transactionLabel.toLowerCase()"
+                  [ios]="icon + '-outline'"
+                  [md]="icon + '-sharp'">
+        </ion-icon>
+      </div>
+    </div>
+
+    <div>
+      <div class="transaction-item__label">{{ transactionLabel }}</div>
+      <div class="transaction-item__data">
+        <div class="transaction-item__data">{{ item.amount }}</div>
+        <div class="transaction-item__data">{{ item.date }}</div>
+      </div>
+    </div>
+  </ion-label>
+</ion-item>

@@ -5,13 +5,16 @@ import { TransactionComponent } from './index/transaction.component';
 import { CoreModule } from '../core/core.module';
 import { IncomeResolver } from './resolver/income.resolver';
 import { TransactionService } from './services/transaction.service';
-import { OutcomeResolver } from './resolver/outcome.resolver';
+import { ExpenseResolver } from './resolver/expense.resolver';
+import { TransactionResolver } from './resolver/transaction.resolver';
+import { TransactionItemComponent } from './transaction-item/transaction-item.component';
 
 
 
 @NgModule({
   declarations: [
-    TransactionComponent
+    TransactionComponent,
+    TransactionItemComponent
   ],
   imports: [
     CoreModule,
@@ -21,7 +24,8 @@ import { OutcomeResolver } from './resolver/outcome.resolver';
   providers: [
     TransactionService,
     IncomeResolver,
-    OutcomeResolver
+    ExpenseResolver,
+    TransactionResolver
   ]
 })
 export class TransactionModule { }

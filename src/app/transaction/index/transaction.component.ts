@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../models/transaction.model';
 import { TransactionService } from '../services/transaction.service';
 import { ActivatedRoute } from '@angular/router';
+import { TransactionType } from '../models/transaction-type.enum';
 
 @Component({
   selector: 'app-transaction',
@@ -25,7 +26,7 @@ export class TransactionComponent implements OnInit {
 
   onSave(data: Transaction): void {
     const item = new Transaction(data);
-    item.isIncome = true;
+    item.type = TransactionType.income;
     this.transactionService.insert(item);
   }
 }

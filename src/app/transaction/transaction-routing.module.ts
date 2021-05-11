@@ -2,16 +2,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { TransactionComponent } from './index/transaction.component';
 import { NgModule } from '@angular/core';
 import { IncomeResolver } from './resolver/income.resolver';
-import { OutcomeResolver } from './resolver/outcome.resolver';
+import { ExpenseResolver } from './resolver/expense.resolver';
+import { TransactionResolver } from './resolver/transaction.resolver';
 
 const routes: Routes = [
   {
     path: '',
+    component:  TransactionComponent,
     pathMatch: 'full',
-    redirectTo: 'income'
+    resolve: {
+      items: TransactionResolver
+    },
+    data: {
+      title: 'All'
+    }
   },
   {
-    path: 'income',
+    path: 'incomes',
     component: TransactionComponent,
     resolve: {
       items: IncomeResolver
@@ -21,13 +28,13 @@ const routes: Routes = [
     }
   },
   {
-    path: 'outcome',
+    path: 'expenses',
     component: TransactionComponent,
     resolve: {
-      items: OutcomeResolver
+      items: ExpenseResolver
     },
     data: {
-      title: 'Outcome'
+      title: 'Expense'
     }
   }
 ];

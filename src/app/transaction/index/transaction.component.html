@@ -9,13 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let income of items">
-      <ion-label>
-        <h2>{{ income.name }}</h2>
-        <h3>{{ income.amount }} EUR</h3>
-        <p>{{ income.location }} {{ income.date }}</p>
-      </ion-label>
-    </ion-item>
+    <app-transaction-item *ngFor="let item of items" [item]="item"></app-transaction-item>
   </ion-list>
 
   <app-create-button (saved)="onSave($event)"></app-create-button>

@@ -1,4 +1,6 @@
 import { StorageService } from './storage/storage.service';
+import { Observable, of } from 'rxjs';
+import { filter, find, take } from 'rxjs/operators';
 
 export class BaseCrudService<T> {
   key: string;
@@ -10,15 +12,17 @@ export class BaseCrudService<T> {
   all(forceReload = false): T[] {
     if (this.items?.length && !forceReload) {
       return this.items;
+      // return of(this.items).pipe(take(1));
     }
 
-    this.items = this.storageService.get(this.key) || [];
-    return this.items;
+    return this.storageService.get(this.key) || [];
+
+    // return of(this.items).pipe(take(1));
   }
 
   insert(item: T): void {
-    const items = this.all();
 
+  const items = this.all();
     items.push(item);
     this.storageService.set(this.key, items);
   }
