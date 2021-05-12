@@ -8,6 +8,7 @@ import { TransactionService } from './services/transaction.service';
 import { ExpenseResolver } from './resolver/expense.resolver';
 import { TransactionResolver } from './resolver/transaction.resolver';
 import { TransactionItemComponent } from './transaction-item/transaction-item.component';
+import { TransactionLocationResolver } from './resolver/transaction-location.resolver';
 
 
 
@@ -25,7 +26,8 @@ import { TransactionItemComponent } from './transaction-item/transaction-item.co
     TransactionService,
     IncomeResolver,
     ExpenseResolver,
-    TransactionResolver
+    TransactionResolver,
+    TransactionLocationResolver
   ]
 })
 export class TransactionModule { }

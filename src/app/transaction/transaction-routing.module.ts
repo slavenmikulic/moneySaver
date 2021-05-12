@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { IncomeResolver } from './resolver/income.resolver';
 import { ExpenseResolver } from './resolver/expense.resolver';
 import { TransactionResolver } from './resolver/transaction.resolver';
+import { TransactionLocationResolver } from './resolver/transaction-location.resolver';
 
 const routes: Routes = [
   {
@@ -35,6 +36,16 @@ const routes: Routes = [
     },
     data: {
       title: 'Expense'
+    }
+  },
+  {
+    path: ':location',
+    component: TransactionComponent,
+    resolve: {
+      items: TransactionLocationResolver
+    },
+    data: {
+      title: 'Location'
     }
   }
 ];

@@ -23,4 +23,8 @@ export class TransactionService extends BaseCrudService<Transaction> {
   getOutcomes(): Transaction[] {
     return this.all().filter(item => item.type === TransactionType.expense);
   }
+
+  getByLocation(location: string): Transaction[] {
+    return this.all().filter(item => item.location === location);
+  }
 }
