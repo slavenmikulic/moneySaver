@@ -11,6 +11,13 @@
   <form [formGroup]="form">
     <ion-list>
       <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-select formControlName="type" interface="action-sheet">
+          <ion-select-option value="INCOME">Income</ion-select-option>
+          <ion-select-option value="EXPENSE">Expense</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
         <ion-label>Name</ion-label>
         <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
@@ -26,6 +33,7 @@
         <ion-label>Location</ion-label>
         <ion-input type="text" formControlName="location"></ion-input>
       </ion-item>
+
     </ion-list>
   </form>
 </ion-content>

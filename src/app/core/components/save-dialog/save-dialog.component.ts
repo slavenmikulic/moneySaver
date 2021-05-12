@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { TransactionType } from '../../../transaction/enums/transaction-type.enum';
 
 @Component({
   templateUrl: './save-dialog.component.html',
@@ -16,6 +17,7 @@ export class SaveDialogComponent implements OnInit {
 
   prepareForm() {
     this.form = new FormGroup({
+      type: new FormControl(TransactionType.expense),
       name: new FormControl(''),
       amount: new FormControl(0),
       location: new FormControl(''),
