@@ -4,6 +4,7 @@ import { LocationRoutingModule } from './location-routing.module';
 import { LocationComponent } from './index/location.component';
 import { LocationService } from './services/location.service';
 import { CoreModule } from '../core/core.module';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -11,11 +12,12 @@ import { CoreModule } from '../core/core.module';
   declarations: [
     LocationComponent
   ],
-  imports: [
-    CoreModule,
-    CommonModule,
-    LocationRoutingModule,
-  ],
+    imports: [
+        CoreModule,
+        CommonModule,
+        LocationRoutingModule,
+        IonicModule,
+    ],
   providers: [
     LocationService
   ]

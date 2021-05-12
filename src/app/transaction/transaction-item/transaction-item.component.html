@@ -3,7 +3,7 @@
     <div>
       <div class="transaction-item__label">Location</div>
       <div class="transaction-item__data">
-        <span>{{ item.name }}</span>
+        <span>{{ item.location }}</span>
         <ion-icon class="transaction-item__icon"
                   [ngClass]="'transaction-item__icon--' + transactionLabel.toLowerCase()"
                   [ios]="icon + '-outline'"
@@ -16,7 +16,7 @@
       <div class="transaction-item__label">{{ transactionLabel }}</div>
       <div class="transaction-item__data">
         <div class="transaction-item__data">{{ item.amount }}</div>
-        <div class="transaction-item__data">{{ item.date }}</div>
+        <div class="transaction-item__data">{{ dateTime }}</div>
       </div>
     </div>
   </ion-label>

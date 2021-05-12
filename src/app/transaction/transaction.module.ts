@@ -9,6 +9,7 @@ import { ExpenseResolver } from './resolver/expense.resolver';
 import { TransactionResolver } from './resolver/transaction.resolver';
 import { TransactionItemComponent } from './transaction-item/transaction-item.component';
 import { TransactionLocationResolver } from './resolver/transaction-location.resolver';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -20,7 +21,8 @@ import { TransactionLocationResolver } from './resolver/transaction-location.res
   imports: [
     CoreModule,
     CommonModule,
-    TransactionRoutingModule
+    TransactionRoutingModule,
+    IonicModule
   ],
   providers: [
     TransactionService,

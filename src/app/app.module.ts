@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { RouteReuseStrategy } from '@angular/router';
-import { IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { STORAGE_INITIALIZER } from './core/storage.initializer';
 
 
@@ -17,7 +17,8 @@ import { STORAGE_INITIALIZER } from './core/storage.initializer';
     CoreModule,
     BrowserModule,
     AppRoutingModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    IonicModule.forRoot(),
   ],
   providers: [
     STORAGE_INITIALIZER,

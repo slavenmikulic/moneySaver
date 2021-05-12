@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../models/transaction.model';
 import { TransactionService } from '../services/transaction.service';
-import { ActivatedRoute } from '@angular/router';
-import { TransactionType } from '../enums/transaction-type.enum';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-transaction',
@@ -14,7 +13,7 @@ export class TransactionComponent implements OnInit {
   amountSum: number;
   title: string;
 
-  constructor(private transactionService: TransactionService, private activatedRoute: ActivatedRoute) { }
+  constructor(private transactionService: TransactionService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(data => {
@@ -26,7 +25,8 @@ export class TransactionComponent implements OnInit {
 
   onSave(data: Transaction): void {
     const item = new Transaction(data);
-    item.type = TransactionType.income;
     this.transactionService.insert(item);
+
+    this.router.navigateByUrl('./');
   }
 }
