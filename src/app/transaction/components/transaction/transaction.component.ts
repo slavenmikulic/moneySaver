@@ -31,6 +31,7 @@ export class TransactionComponent implements OnInit {
 
   onSave(data: Transaction): void {
     const item = new Transaction(data);
+    item.id = this.transactionService.generateId();
     this.transactionService.insert(item);
   }
 }

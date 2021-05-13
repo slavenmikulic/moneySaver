@@ -1,31 +1,39 @@
-<ion-item>
-  <ion-label class="transaction-item">
-    <div>
-      <div class="transaction-item__main-label">Name</div>
-      <div class="transaction-item__main-data">
-        <span>{{ transaction.name }}</span>
-        <ion-icon class="transaction-item__icon"
-                  [ngClass]="'transaction-item__icon--' + transactionLabel.toLowerCase()"
-                  [ios]="icon + '-outline'"
-                  [md]="icon + '-sharp'">
-        </ion-icon>
-      </div>
-    </div>
+<ion-item-sliding>
+  <ion-item-options>
+    <ion-item-option color="danger">
+      <ion-icon ios="trash-outline" md="trash" (click)="deleteTransaction()"></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
 
-    <div>
-      <div class="transaction-item__label">Location</div>
-      <div class="transaction-item__data">
-        <span>{{ transaction.location }}</span>
-
+  <ion-item>
+    <ion-label class="transaction-item">
+      <div>
+        <div class="transaction-item__main-label">Name</div>
+        <div class="transaction-item__main-data">
+          <span>{{ transaction.name }}</span>
+          <ion-icon class="transaction-item__icon"
+                    [ngClass]="'transaction-item__icon--' + transactionLabel.toLowerCase()"
+                    [ios]="icon + '-outline'"
+                    [md]="icon + '-sharp'">
+          </ion-icon>
+        </div>
       </div>
-    </div>
 
-    <div>
-      <div class="transaction-item__label">{{ transactionLabel }}</div>
-      <div class="transaction-item__data">
-        <div class="transaction-item__data">{{ transaction.amount }} EUR</div>
-        <div class="transaction-item__data">{{ dateTime }}</div>
+      <div>
+        <div class="transaction-item__label">Location</div>
+        <div class="transaction-item__data">
+          <span>{{ transaction.location }}</span>
+
+        </div>
       </div>
-    </div>
-  </ion-label>
-</ion-item>
+
+      <div>
+        <div class="transaction-item__label">{{ transactionLabel }}</div>
+        <div class="transaction-item__data">
+          <div class="transaction-item__data">{{ transaction.amount }} EUR</div>
+          <div class="transaction-item__data">{{ dateTime }}</div>
+        </div>
+      </div>
+    </ion-label>
+  </ion-item>
+</ion-item-sliding>

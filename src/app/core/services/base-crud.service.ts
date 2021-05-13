@@ -1,8 +1,9 @@
 import { StorageService } from './storage.service';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Base } from '../models/base.model';
 
-export class BaseCrudService<T> {
+export class BaseCrudService<T extends Base> {
   key: string;
   protected items: T[];
 
@@ -31,14 +32,26 @@ export class BaseCrudService<T> {
     this.storageService.set(this.key, this.items).catch(console.log);
   }
 
-  delete(index: number): void {
+  delete(id: number): void {
     this.all().subscribe(() => {
+      const index = this.items.findIndex((item) => item.id === id);
       this.items.splice(index, 1);
+
       this.storageService.set(this.key, this.items).catch(console.log);
     });
   }
 
   get(index: number): Observable<T> {
     return this.all().pipe(map(items => items[index]));
+  }
+
+
+  generateId(base = 1): number {
+    let id = this.items.length + base;
+    if (this.items.find(item => item.id === id)) {
+      id = this.generateId(id + 1);
+    }
+
+    return id;
   }
 }

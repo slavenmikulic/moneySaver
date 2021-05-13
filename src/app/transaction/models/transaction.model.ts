@@ -1,6 +1,8 @@
 import { TransactionType } from '../enums/transaction-type.enum';
+import { Base } from '../../core/models/base.model';
 
-export class Transaction {
+export class Transaction implements Base {
+  id: number;
   date: string;
   amount: number;
   location: string;
@@ -14,4 +16,5 @@ export class Transaction {
       this.date = init.date.toLowerCase();
     }
   }
+
 }

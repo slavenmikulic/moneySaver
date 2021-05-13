@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Transaction } from '../../models/transaction.model';
 import { TransactionType } from '../../enums/transaction-type.enum';
+import { TransactionService } from '../../services/transaction.service';
 
 @Component({
   selector: 'app-transaction-item',
@@ -15,7 +16,7 @@ export class TransactionItemComponent implements OnInit {
   icon: string;
   dateTime: string;
 
-  constructor() {
+  constructor(private transactionService: TransactionService) {
   }
 
   ngOnInit() {
@@ -35,6 +36,10 @@ export class TransactionItemComponent implements OnInit {
   formatDateTime(date: string): void {
     const dateTime = new Date(date);
     this.dateTime = dateTime.toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'});
+  }
+
+  deleteTransaction() {
+    this.transactionService.delete(this.transaction.id);
   }
 
 }
