@@ -9,7 +9,10 @@ import { TransactionType } from '../../../transaction/enums/transaction-type.enu
 })
 export class SaveDialogComponent implements OnInit {
   form: FormGroup;
-  constructor(private modalController: ModalController) { }
+  transactionType = TransactionType;
+
+  constructor(private modalController: ModalController) {
+  }
 
   ngOnInit() {
     this.prepareForm();
@@ -19,10 +22,11 @@ export class SaveDialogComponent implements OnInit {
     this.form = new FormGroup({
       type: new FormControl(TransactionType.expense),
       name: new FormControl(''),
-      amount: new FormControl(0),
+      amount: new FormControl(),
       location: new FormControl(''),
-      date: new FormControl(),
+      date: new FormControl(new Date().toLocaleString()),
     });
+
   }
 
   saveData() {

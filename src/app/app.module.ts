@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -7,7 +7,7 @@ import { CoreModule } from './core/core.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { STORAGE_INITIALIZER } from './core/storage.initializer';
+import { STORAGE_INITIALIZER } from './core/initalizers/storage.initializer';
 
 
 @NgModule({
@@ -21,11 +21,18 @@ import { STORAGE_INITIALIZER } from './core/storage.initializer';
     IonicModule.forRoot(),
   ],
   providers: [
-    STORAGE_INITIALIZER,
+    // MESSAGE_INITIALIZER,
+    ...STORAGE_INITIALIZER,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy,
     },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: (smsRetrieverService: SmsRetrieverService) => () => smsRetrieverService.initHash(),
+    //   deps: [SmsRetrieverService],
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent],
 })

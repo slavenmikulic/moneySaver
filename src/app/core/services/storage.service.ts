@@ -19,12 +19,6 @@ export class StorageService {
   }
 
   get<T>(key: string): Observable<T[]> {
-    return fromPromise(this.storage.get(key)).pipe(map(items => {
-      if (items) {
-        return items;
-      }
-
-      return [];
-    }));
+    return fromPromise(this.storage.get(key)).pipe(map(items => items || []));
   }
 }

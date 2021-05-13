@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Transaction } from '../models/transaction.model';
-import { TransactionType } from '../enums/transaction-type.enum';
+import { Transaction } from '../../models/transaction.model';
+import { TransactionType } from '../../enums/transaction-type.enum';
 
 @Component({
   selector: 'app-transaction-item',

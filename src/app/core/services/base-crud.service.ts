@@ -1,4 +1,4 @@
-import { StorageService } from './storage/storage.service';
+import { StorageService } from './storage.service';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 

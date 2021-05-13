@@ -9,5 +9,9 @@ export class Transaction {
 
   constructor(init?: Partial<Transaction>) {
     Object.assign(this, init);
+
+    if (init.date) {
+      this.date = init.date.toLowerCase();
+    }
   }
 }

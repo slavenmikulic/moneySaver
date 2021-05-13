@@ -13,8 +13,8 @@
       <ion-item>
         <ion-label>Type</ion-label>
         <ion-select formControlName="type" interface="action-sheet">
-          <ion-select-option value="INCOME">Income</ion-select-option>
-          <ion-select-option value="EXPENSE">Expense</ion-select-option>
+          <ion-select-option [value]="transactionType.income">Income</ion-select-option>
+          <ion-select-option [value]="transactionType.expense">Expense</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>

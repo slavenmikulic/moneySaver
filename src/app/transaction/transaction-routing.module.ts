@@ -1,10 +1,10 @@
 import { RouterModule, Routes } from '@angular/router';
-import { TransactionComponent } from './index/transaction.component';
+import { TransactionComponent } from './components/index/transaction.component';
 import { NgModule } from '@angular/core';
-import { IncomeResolver } from './resolver/income.resolver';
-import { ExpenseResolver } from './resolver/expense.resolver';
-import { TransactionResolver } from './resolver/transaction.resolver';
-import { TransactionLocationResolver } from './resolver/transaction-location.resolver';
+import { IncomeResolver } from './resolvers/income.resolver';
+import { ExpenseResolver } from './resolvers/expense.resolver';
+import { TransactionResolver } from './resolvers/transaction.resolver';
+import { TransactionLocationResolver } from './resolvers/transaction-location.resolver';
 
 const routes: Routes = [
   {

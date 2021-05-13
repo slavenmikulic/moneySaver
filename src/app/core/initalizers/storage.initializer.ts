@@ -1,6 +1,6 @@
-import { StorageService } from './services/storage/storage.service';
+import { StorageService } from '../services/storage.service';
 import { Storage } from '@ionic/storage-angular';
-import { APP_INITIALIZER } from '@angular/core';
+import { APP_INITIALIZER, Provider } from '@angular/core';
 
 export const STORAGE_INITIALIZER = [
   StorageService,

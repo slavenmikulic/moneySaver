@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TransactionRoutingModule } from './transaction-routing.module';
-import { TransactionComponent } from './index/transaction.component';
+import { TransactionComponent } from './components/index/transaction.component';
 import { CoreModule } from '../core/core.module';
-import { IncomeResolver } from './resolver/income.resolver';
+import { IncomeResolver } from './resolvers/income.resolver';
 import { TransactionService } from './services/transaction.service';
-import { ExpenseResolver } from './resolver/expense.resolver';
-import { TransactionResolver } from './resolver/transaction.resolver';
-import { TransactionItemComponent } from './transaction-item/transaction-item.component';
-import { TransactionLocationResolver } from './resolver/transaction-location.resolver';
+import { ExpenseResolver } from './resolvers/expense.resolver';
+import { TransactionResolver } from './resolvers/transaction.resolver';
+import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
+import { TransactionLocationResolver } from './resolvers/transaction-location.resolver';
 import { IonicModule } from '@ionic/angular';
+import { TransactionHeaderComponent } from './components/transaction-header/transaction-header.component';
 
 
 
 @NgModule({
   declarations: [
     TransactionComponent,
-    TransactionItemComponent
+    TransactionItemComponent,
+    TransactionHeaderComponent
   ],
   imports: [
     CoreModule,

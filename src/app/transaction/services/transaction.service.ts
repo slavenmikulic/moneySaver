@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Transaction } from '../models/transaction.model';
 import { BaseCrudService } from '../../core/services/base-crud.service';
-import { StorageService } from '../../core/services/storage/storage.service';
+import { StorageService } from '../../core/services/storage.service';
 import { TransactionType } from '../enums/transaction-type.enum';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -14,19 +14,19 @@ export class TransactionService extends BaseCrudService<Transaction> {
     super(storageService);
   }
 
-  getSum(incomes: Transaction[]): number {
-    if (!(incomes && incomes.length)) {
+  getSum(transactions: Transaction[]): number {
+    if (!(transactions && transactions.length)) {
       return 0;
     }
 
-    return incomes.reduce((sum, income) => sum + income.amount, 0);
+    return transactions.reduce((sum, transaction) => sum + transaction.amount, 0);
   }
 
   getIncomes(): Observable<Transaction[]> {
     return this.all().pipe(map(items => items.filter(item => item.type === TransactionType.income)));
   }
 
-  getOutcomes(): Observable<Transaction[]> {
+  getExpenses(): Observable<Transaction[]> {
     return this.all().pipe(map(items => items.filter(item => item.type === TransactionType.expense)));
   }
 
