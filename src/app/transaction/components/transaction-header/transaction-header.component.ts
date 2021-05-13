@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-transaction-header',
@@ -8,10 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class TransactionHeaderComponent implements OnInit {
   @Input() title: string;
-  @Input() amountSum$: Observable<number>;
+  @Input() amountSum: number;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

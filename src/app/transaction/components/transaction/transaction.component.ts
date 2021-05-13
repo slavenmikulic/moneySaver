@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../../models/transaction.model';
 import { TransactionService } from '../../services/transaction.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { TransactionType } from '../../enums/transaction-type.enum';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-transaction',
@@ -12,18 +12,18 @@ import { map } from 'rxjs/operators';
 })
 export class TransactionComponent implements OnInit {
   items: Transaction[];
-  amountSum$: Observable<number>;
+  amountSum: number;
   title: string;
 
-  constructor(private transactionService: TransactionService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private transactionService: TransactionService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(data => {
       this.items = data.items;
-
-      this.amountSum$ = this.calculateSum();
       this.title = data.title;
+
+      this.amountSum = this.calculateSum(this.items);
     });
   }
 
@@ -32,18 +32,14 @@ export class TransactionComponent implements OnInit {
     this.transactionService.insert(item);
   }
 
-  calculateSum() {
-    return forkJoin([this.transactionService.getIncomes(), this.transactionService.getExpenses()]).pipe(
-      map(response => ({
-        incomes: response[0],
-        expenses: response[1]
-      })),
-      map(response => {
-        const incomesSum = this.transactionService.getSum(response.incomes);
-        const expensesSum = this.transactionService.getSum(response.expenses);
+  calculateSum(items: Transaction[]): number {
+    const incomes = items.filter(item => item.type === TransactionType.income);
+    const expenses = items.filter(item => item.type === TransactionType.expense);
 
-        return incomesSum - expensesSum;
-      })
-    );
+    if (incomes?.length === 0) {
+      return this.transactionService.getSum(expenses);
+    }
+
+    return this.transactionService.getSum(incomes) - this.transactionService.getSum(expenses);
   }
 }

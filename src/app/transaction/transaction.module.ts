@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TransactionRoutingModule } from './transaction-routing.module';
-import { TransactionComponent } from './components/index/transaction.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 import { CoreModule } from '../core/core.module';
 import { IncomeResolver } from './resolvers/income.resolver';
 import { TransactionService } from './services/transaction.service';

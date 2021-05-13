@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
-import { TransactionComponent } from './components/index/transaction.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 import { NgModule } from '@angular/core';
 import { IncomeResolver } from './resolvers/income.resolver';
 import { ExpenseResolver } from './resolvers/expense.resolver';
@@ -11,6 +11,7 @@ const routes: Routes = [
     path: '',
     component:  TransactionComponent,
     pathMatch: 'full',
+    runGuardsAndResolvers: 'always',
     resolve: {
       items: TransactionResolver
     },
@@ -21,6 +22,7 @@ const routes: Routes = [
   {
     path: 'incomes',
     component: TransactionComponent,
+    runGuardsAndResolvers: 'always',
     resolve: {
       items: IncomeResolver
     },
@@ -31,6 +33,7 @@ const routes: Routes = [
   {
     path: 'expenses',
     component: TransactionComponent,
+    runGuardsAndResolvers: 'always',
     resolve: {
       items: ExpenseResolver
     },
@@ -41,6 +44,7 @@ const routes: Routes = [
   {
     path: ':location',
     component: TransactionComponent,
+    runGuardsAndResolvers: 'always',
     resolve: {
       items: TransactionLocationResolver
     },

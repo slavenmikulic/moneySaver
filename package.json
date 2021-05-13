@@ -26,7 +26,6 @@
     "@ionic/angular": "^5.5.2",
     "@ionic/storage-angular": "^3.0.6",
     "cordova-plugin-nativestorage": "^2.3.2",
-    "cordova-plugin-sms-retriever-manager": "^1.0.2",
     "jetifier": "^2.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

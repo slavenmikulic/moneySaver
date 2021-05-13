@@ -4,6 +4,17 @@
   gap: 1rem;
   margin: 1.5rem 0;
 
+  &__main-label {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  &__main-data {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25rem;
+  }
+
   &__label {
     font-size: 0.75rem;
     opacity: 0.8;
@@ -12,11 +23,12 @@
   &__data {
     display: flex;
     justify-content: space-between;
+    font-size: 0.75rem;
   }
 
   &__icon {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
 
     &--income {
       color: #008000FF;
