@@ -9,7 +9,7 @@ import { TransactionType } from '../../enums/transaction-type.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionItemComponent implements OnInit {
-  @Input() item: Transaction;
+  @Input() transaction: Transaction;
 
   transactionLabel: string;
   icon: string;
@@ -19,9 +19,9 @@ export class TransactionItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setLabelByType(this.item.type);
-    this.setIconByType(this.item.type);
-    this.formatDateTime(this.item.date);
+    this.setLabelByType(this.transaction.type);
+    this.setIconByType(this.transaction.type);
+    this.formatDateTime(this.transaction.date);
   }
 
   setLabelByType(type: TransactionType): void {
@@ -34,7 +34,7 @@ export class TransactionItemComponent implements OnInit {
 
   formatDateTime(date: string): void {
     const dateTime = new Date(date);
-    this.dateTime = dateTime.toDateString();
+    this.dateTime = dateTime.toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'});
   }
 
 }

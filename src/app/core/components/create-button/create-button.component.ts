@@ -13,10 +13,10 @@ export class CreateButtonComponent implements OnInit {
   constructor(private modalController: ModalController) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  async openCreate() {
+  async openCreate(): Promise<void> {
     const modal = await this.modalController.create({
       component: SaveDialogComponent
     });

@@ -3,8 +3,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf="items?.length; else nodata">
-    <app-transaction-item *ngFor="let item of items" [item]="item"></app-transaction-item>
+
+  <ion-list *ngIf="monthTransactions?.length; else nodata">
+    <app-transaction-group
+      *ngFor="let monthTransaction of monthTransactions"
+      [monthTransaction]="monthTransaction">
+    </app-transaction-group>
   </ion-list>
 
   <ng-template #nodata>

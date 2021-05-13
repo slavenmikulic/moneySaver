@@ -1,0 +1,10 @@
+
+<ion-list *ngIf="transactions?.length; else nodata">
+  <app-transaction-item *ngFor="let transaction of transactions" [transaction]="transaction"></app-transaction-item>
+</ion-list>
+
+<ng-template #nodata>
+  <div class="transaction__no-data">
+    No data
+  </div>
+</ng-template>

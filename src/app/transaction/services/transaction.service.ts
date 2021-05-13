@@ -14,13 +14,7 @@ export class TransactionService extends BaseCrudService<Transaction> {
     super(storageService);
   }
 
-  getSum(transactions: Transaction[]): number {
-    if (!(transactions && transactions.length)) {
-      return 0;
-    }
 
-    return transactions.reduce((sum, transaction) => sum + transaction.amount, 0);
-  }
 
   getIncomes(): Observable<Transaction[]> {
     return this.all().pipe(map(items => items.filter(item => item.type === TransactionType.income)));
@@ -32,5 +26,24 @@ export class TransactionService extends BaseCrudService<Transaction> {
 
   getByLocation(location: string): Observable<Transaction[]> {
     return this.all().pipe(map(items => items.filter(item => item.location === location)));
+  }
+
+  calculateSum(items: Transaction[]): number {
+    const incomes = items.filter(item => item.type === TransactionType.income);
+    const expenses = items.filter(item => item.type === TransactionType.expense);
+
+    if (incomes?.length === 0) {
+      return this.getSum(expenses);
+    }
+
+    return this.getSum(incomes) - this.getSum(expenses);
+  }
+
+  getSum(transactions: Transaction[]): number {
+    if (!(transactions && transactions.length)) {
+      return 0;
+    }
+
+    return transactions.reduce((sum, transaction) => sum + transaction.amount, 0);
   }
 }

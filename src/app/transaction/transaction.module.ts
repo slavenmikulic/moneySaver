@@ -11,12 +11,17 @@ import { TransactionItemComponent } from './components/transaction-item/transact
 import { TransactionLocationResolver } from './resolvers/transaction-location.resolver';
 import { IonicModule } from '@ionic/angular';
 import { TransactionHeaderComponent } from './components/transaction-header/transaction-header.component';
+import { MonthTransactionService } from './services/month-transaction.service';
+import { TransactionGroupComponent } from './components/transaction-group/transaction-group.component';
+import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 
 
 @NgModule({
   declarations: [
     TransactionComponent,
+    TransactionGroupComponent,
+    TransactionListComponent,
     TransactionItemComponent,
     TransactionHeaderComponent
   ],
@@ -28,6 +33,7 @@ import { TransactionHeaderComponent } from './components/transaction-header/tran
   ],
   providers: [
     TransactionService,
+    MonthTransactionService,
     IncomeResolver,
     ExpenseResolver,
     TransactionResolver,

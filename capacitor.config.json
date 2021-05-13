@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "moneySaver",
+  "appId": "money.saver",
+  "appName": "money saver",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

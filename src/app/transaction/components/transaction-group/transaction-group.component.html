@@ -1,0 +1,7 @@
+<ion-item-group>
+  <ion-item-divider>
+    <ion-label>{{ monthTransaction.date }} ({{ amount }} EUR)</ion-label>
+  </ion-item-divider>
+
+  <app-transaction-list [transactions]="monthTransaction.transactions"></app-transaction-list>
+</ion-item-group>
