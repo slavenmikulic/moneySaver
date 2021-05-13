@@ -3,9 +3,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="items?.length; else nodata">
     <app-transaction-item *ngFor="let item of items" [item]="item"></app-transaction-item>
   </ion-list>
+
+  <ng-template #nodata>
+    <div class="transaction__no-data">
+      No data
+    </div>
+  </ng-template>
 
   <app-create-button (saved)="onSave($event)"></app-create-button>
 </ion-content>
