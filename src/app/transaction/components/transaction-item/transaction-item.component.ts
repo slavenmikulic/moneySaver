@@ -11,6 +11,7 @@ import { TransactionService } from '../../services/transaction.service';
 })
 export class TransactionItemComponent implements OnInit {
   @Input() transaction: Transaction;
+  @Output() delete = new EventEmitter<void>();
 
   transactionLabel: string;
   icon: string;
@@ -39,7 +40,9 @@ export class TransactionItemComponent implements OnInit {
   }
 
   deleteTransaction() {
+
     this.transactionService.delete(this.transaction.id);
+    this.delete.emit();
   }
 
 }

@@ -3,6 +3,7 @@
   <app-transaction-item
     *ngFor="let transaction of transactions"
     [transaction]="transaction"
+    (delete)="onDelete(transaction)"
   >
   </app-transaction-item>
 </ion-list>
