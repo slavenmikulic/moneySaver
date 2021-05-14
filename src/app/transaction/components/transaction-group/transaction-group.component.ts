@@ -9,7 +9,7 @@ import { TransactionService } from '../../services/transaction.service';
 })
 export class TransactionGroupComponent implements OnInit {
   @Input() monthTransaction: MonthTransaction;
-  amount: number;
+  amount: string;
 
   constructor(private transactionService: TransactionService) {
   }

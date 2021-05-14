@@ -4,6 +4,7 @@ import { TransactionService } from '../../services/transaction.service';
 import { ActivatedRoute } from '@angular/router';
 import { MonthTransactionService } from '../../services/month-transaction.service';
 import { MonthTransaction } from '../../models/month-transaction.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-transaction',
@@ -12,8 +13,9 @@ import { MonthTransaction } from '../../models/month-transaction.model';
 })
 export class TransactionComponent implements OnInit {
   monthTransactions: MonthTransaction[];
-  amountSum: number;
+  amountSum: string;
   title: string;
+  transactions: Transaction[];
 
   constructor(private transactionService: TransactionService,
               private monthTransactionService: MonthTransactionService,
@@ -24,14 +26,21 @@ export class TransactionComponent implements OnInit {
     this.activatedRoute.data.subscribe(data => {
       this.title = data.title;
 
-      this.monthTransactions = this.monthTransactionService.groupTransactionsByMonth(data.items);
-      this.amountSum = this.transactionService.calculateSum(data.items);
+      this.transactions = data.items;
+      this.initData(this.transactions);
     });
+  }
+
+  initData(items: Transaction[]): void {
+    this.monthTransactions = this.monthTransactionService.groupTransactionsByMonth(items);
+    this.amountSum = this.transactionService.calculateSum(items);
   }
 
   onSave(data: Transaction): void {
     const item = new Transaction(data);
     item.id = this.transactionService.generateId();
     this.transactionService.insert(item);
+
+    this.initData(this.transactions);
   }
 }

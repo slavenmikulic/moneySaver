@@ -21,18 +21,11 @@ import { STORAGE_INITIALIZER } from './core/initalizers/storage.initializer';
     IonicModule.forRoot(),
   ],
   providers: [
-    // MESSAGE_INITIALIZER,
     ...STORAGE_INITIALIZER,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy,
     },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (smsRetrieverService: SmsRetrieverService) => () => smsRetrieverService.initHash(),
-    //   deps: [SmsRetrieverService],
-    //   multi: true
-    // }
   ],
   bootstrap: [AppComponent],
 })

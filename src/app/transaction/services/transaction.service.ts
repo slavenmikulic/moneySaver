@@ -28,15 +28,11 @@ export class TransactionService extends BaseCrudService<Transaction> {
     return this.all().pipe(map(items => items.filter(item => item.location === location)));
   }
 
-  calculateSum(items: Transaction[]): number {
+  calculateSum(items: Transaction[]): string {
     const incomes = items.filter(item => item.type === TransactionType.income);
     const expenses = items.filter(item => item.type === TransactionType.expense);
 
-    if (incomes?.length === 0) {
-      return this.getSum(expenses);
-    }
-
-    return this.getSum(incomes) - this.getSum(expenses);
+    return (this.getSum(incomes) - this.getSum(expenses)).toFixed(2);
   }
 
   getSum(transactions: Transaction[]): number {
